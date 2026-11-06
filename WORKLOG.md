@@ -23,6 +23,8 @@
 
 四个仓库均为 **Public**，默认分支 `main`，已设置 About、Topics、`v0.1.0` tag 和 GitHub Release。
 
+> 当前 `main` 比 `v0.1.0` 多一个 `docs: add 2026-11-06 worklog` 提交（就是本文件），tag 未移动。
+
 ### 本次做了什么
 
 1. **四个项目定名**
@@ -62,6 +64,7 @@
    - `gh repo edit` 设置中英双语 About + Topics
    - `gh release create v0.1.0` 发布首个 Release
 8. **验证**
+   > 以下是 `v0.1.0` 发布当时的验证；随后新增本 `WORKLOG.md` 的 docs 提交，`HEAD` 已前进一个提交，`v0.1.0` tag 未移动。
    - 本地 `HEAD` = `origin/main` = `v0.1.0` 指向的提交
    - 四个仓库 `git status` 干净
    - GitHub 大小写敏感链接检查：四个仓库全部 0 个断链
