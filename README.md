@@ -2,6 +2,7 @@
 
 > **Language / 语言**: 中文 | [English](README.en.md)
 > **名称 / Name**: 灵渠 AI 中转站 · Lingqu AI Relay
+> **当前版本 / Current version**: [`v0.1.0`](CHANGELOG.md) · [版本规则](VERSIONING.md)
 
 > 用一台小服务器，把多个上游 AI API 聚合成一个 **OpenAI 兼容入口**，带用户、令牌、额度、充值、自定义前端、注册验证码、监控和备份。
 >
@@ -15,6 +16,7 @@
 > - 想让 AI 装？把 `AI-DEPLOY.md` 整个丢给 AI。
 
 <p>
+  <img alt="Version v0.1.0" src="https://img.shields.io/badge/version-v0.1.0-2563eb?style=flat-square">
   <img alt="Ubuntu 22.04 / 24.04" src="https://img.shields.io/badge/Ubuntu-22.04%20%7C%2024.04-E95420?logo=ubuntu&logoColor=white&style=flat-square">
   <img alt="Docker Compose" src="https://img.shields.io/badge/Docker-compose-2496ED?logo=docker&logoColor=white&style=flat-square">
   <img alt="new-api" src="https://img.shields.io/badge/new--api-1.x-4f46e5?style=flat-square">
@@ -51,6 +53,7 @@
 | 初始化、备份、健康检查、模型探测 | `scripts/` |
 | 架构、安装、运维、安全、支付、前端 | `docs/` |
 | 真实截图 + 效果 mockup | `docs/images/` |
+| 版本与更新记录 | `VERSION` / `CHANGELOG.md` / `VERSIONING.md` |
 
 **新手先做这 3 步**
 

@@ -2,6 +2,7 @@
 
 > **Language / 语言**: [中文](README.md) | English
 > **Name / 名称**: Lingqu AI Relay · 灵渠 AI 中转站
+> **Current version**: [`v0.1.0`](CHANGELOG.md) · [Versioning rules](VERSIONING.md)
 
 > Use a small server to aggregate multiple upstream AI APIs into a single **OpenAI-compatible endpoint**, with users, tokens, quota, top-ups, a custom frontend, registration captcha, monitoring, and backups.
 >
@@ -15,6 +16,7 @@
 > - Want AI to install it? Hand the whole `AI-DEPLOY.en.md` to an AI.
 
 <p>
+  <img alt="Version v0.1.0" src="https://img.shields.io/badge/version-v0.1.0-2563eb?style=flat-square">
   <img alt="Ubuntu 22.04 / 24.04" src="https://img.shields.io/badge/Ubuntu-22.04%20%7C%2024.04-E95420?logo=ubuntu&logoColor=white&style=flat-square">
   <img alt="Docker Compose" src="https://img.shields.io/badge/Docker-compose-2496ED?logo=docker&logoColor=white&style=flat-square">
   <img alt="new-api" src="https://img.shields.io/badge/new--api-1.x-4f46e5?style=flat-square">
@@ -51,6 +53,7 @@ It is not a "buy a server and money prints itself" project. Upstream terms of se
 | Initialization, backup, health check, model probing | `scripts/` |
 | Architecture, installation, operations, security, payment, frontend | `docs/` (Chinese) |
 | Real screenshots + rendered mockups | `docs/images/` |
+| Version and changelog | `VERSION` / `CHANGELOG.md` / `VERSIONING.md` |
 
 > English scope: this README and `AI-DEPLOY.en.md` are complete translations. The optional deep-dive files under `docs/` are currently in Chinese.
 
