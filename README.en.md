@@ -1,6 +1,7 @@
-# Lingqu AI Relay · new-api + Caddy Replication Manual
+# Lingqu AI Relay · 灵渠 AI 中转站 (new-api + Caddy Manual)
 
 > **Language / 语言**: [中文](README.md) | English
+> **Name / 名称**: Lingqu AI Relay · 灵渠 AI 中转站
 
 > Use a small server to aggregate multiple upstream AI APIs into a single **OpenAI-compatible endpoint**, with users, tokens, quota, top-ups, a custom frontend, registration captcha, monitoring, and backups.
 >

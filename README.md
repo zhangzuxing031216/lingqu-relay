@@ -1,6 +1,7 @@
-# 灵渠 AI 中转站 · new-api + Caddy 复刻手册
+# 灵渠 AI 中转站 · Lingqu AI Relay（new-api + Caddy 复刻手册）
 
 > **Language / 语言**: 中文 | [English](README.en.md)
+> **名称 / Name**: 灵渠 AI 中转站 · Lingqu AI Relay
 
 > 用一台小服务器，把多个上游 AI API 聚合成一个 **OpenAI 兼容入口**，带用户、令牌、额度、充值、自定义前端、注册验证码、监控和备份。
 >
