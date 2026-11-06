@@ -1,0 +1,38 @@
+# 本地/敏感文件，绝对不要提交
+.env
+.env.*
+!.env.example
+*.secret
+lq_captcha.secret
+*.pem
+*.key
+
+# 数据库与备份
+*.db
+*.db-wal
+*.db-shm
+backups/
+data/
+
+# 日志
+*.log
+logs/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# 下载半成品
+*.part
+*.download
+
+# 系统
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# 编辑器
+.vscode/
+.idea/

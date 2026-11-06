@@ -1,0 +1,117 @@
+# Caddy 2 模板（已脱敏）
+#
+# 使用前必须替换：
+#   YOUR_DOMAIN  → 你的域名，不带 www，例如 api.example.com
+#   YOUR_EMAIL   → 你的邮箱，用于 ACME 通知
+#
+# 校验：caddy validate --config /etc/caddy/Caddyfile
+# 重载：systemctl reload caddy
+
+{
+	email YOUR_EMAIL
+	servers {
+		protocols h1 h2
+	}
+}
+
+# 主站：www 前缀
+www.YOUR_DOMAIN {
+	encode gzip zstd
+
+	log {
+		output file /var/log/caddy/access.log {
+			roll_size 20MiB
+			roll_keep 5
+		}
+		format console
+	}
+
+	# ── 注册验证码网关 ─────────────────────────────
+	# 网关自己再转发到 new-api:3000。
+	handle /lq/captcha* {
+		reverse_proxy 127.0.0.1:3100
+	}
+	handle /api/user/register {
+		reverse_proxy 127.0.0.1:3100
+	}
+
+	# ── 客户端漏写 /v1 的兼容 ──────────────────────
+	# 有些 SDK 会把 base_url 配成 https://www.YOUR_DOMAIN，
+	# 然后请求 /chat/completions。这里补上 /v1，避免 404。
+	# flush_interval -1 用于 SSE 流式输出。
+	handle /responses {
+		rewrite * /v1/responses
+		reverse_proxy 127.0.0.1:3000 {
+			flush_interval -1
+		}
+	}
+	handle /chat/completions {
+		rewrite * /v1/chat/completions
+		reverse_proxy 127.0.0.1:3000 {
+			flush_interval -1
+		}
+	}
+	handle /messages {
+		rewrite * /v1/messages
+		reverse_proxy 127.0.0.1:3000 {
+			flush_interval -1
+		}
+	}
+
+	# ── 静态页面 ───────────────────────────────────
+	# Caddy 直接读盘，改 HTML 不用重启容器。
+	handle /pricing {
+		redir * /price 302
+	}
+	handle /models {
+		# 浏览器访问 /models 时跳到价格页；SDK 请用 /v1/models。
+		redir * /price 302
+	}
+	handle /price {
+		rewrite * /price.html
+		root * /opt/new-api/static
+		file_server
+	}
+	handle /price/* {
+		rewrite * /price.html
+		root * /opt/new-api/static
+		file_server
+	}
+	handle /brand/* {
+		uri strip_prefix /brand
+		root * /opt/new-api/static
+		file_server
+	}
+
+	# ── 前端外壳 ───────────────────────────────────
+	# 除 API、静态资源、已知页面外，其余都交给 _app.html。
+	# 这样刷新前端路由不会 404。
+	@spa {
+		not path /api/* /v1/* /static/* /assets/* /brand/* /_app.html /price /price/* /pricing /models /favicon.ico
+	}
+	handle @spa {
+		rewrite * /_app.html
+		root * /opt/new-api/static
+		file_server
+	}
+
+	# ── 兜底：全部交给 new-api ─────────────────────
+	handle {
+		reverse_proxy 127.0.0.1:3000 {
+			flush_interval -1
+		}
+	}
+}
+
+# 裸域名 301 到 www
+YOUR_DOMAIN {
+	redir https://www.YOUR_DOMAIN{uri} permanent
+}
+
+# 可选：给报表 JSON 加 Basic Auth（Caddy 2.8+ 用 basic_auth，旧版用 basicauth）
+# 生成密码哈希：caddy hash-password --plaintext '你的密码'
+#
+# @reports path /topups.json /vendor_stats.json /price_watch.json /model_health.json
+# basic_auth @reports {
+#     admin $2a$14$REPLACE_WITH_YOUR_HASH
+# }

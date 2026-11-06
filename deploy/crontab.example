@@ -1,0 +1,18 @@
+# 灵渠 AI 中转站定时任务模板
+# 安装：crontab /root/lingqu-relay/deploy/crontab.example
+# 注意：路径按实际仓库位置改；Windows 换行/带 BOM 会导致 crontab 解析失败。
+
+SHELL=/bin/bash
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+
+# 每天 04:30 备份（SQLite 在线备份 + 配置打包）
+30 4 * * * /bin/bash /root/lingqu-relay/scripts/backup.sh >> /var/log/lingqu-backup.log 2>&1
+
+# 每 10 分钟健康检查
+*/10 * * * * /bin/bash /root/lingqu-relay/scripts/health-check.sh >> /var/log/lingqu-health.log 2>&1
+
+# 每天 04:40 探测模型（需要 .env 里有 NEWAPI_BASE / NEWAPI_KEY）
+40 4 * * * cd /root/lingqu-relay && set -a && . ./.env 2>/dev/null || true; set +a; /usr/bin/python3 scripts/probe-models.py >> /var/log/lingqu-models.log 2>&1
+
+# 可选：每天 05:00 清理 7 天前的 Docker 日志（只清日志，不删镜像/容器）
+# 0 5 * * * find /var/lib/docker/containers -name '*-json.log' -mtime +7 -exec truncate -s 0 {} \;

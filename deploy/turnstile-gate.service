@@ -1,0 +1,22 @@
+[Unit]
+Description=Lingqu registration captcha gate
+After=network.target docker.service
+Wants=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 -u /root/turnstile_gate.py
+Environment=UPSTREAM=http://127.0.0.1:3000
+Environment=BIND=127.0.0.1
+Environment=PORT=3100
+Environment=SECRET_FILE=/root/lq_captcha.secret
+Environment=CAPTCHA_TTL=600
+Environment=RATE_MAX=120
+Environment=NO_CAP_QUOTA=5
+Restart=always
+RestartSec=3
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

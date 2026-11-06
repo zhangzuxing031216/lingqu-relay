@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="620" viewBox="0 0 960 620" role="img" aria-label="Lingqu relay architecture">
+  <defs>
+    <style>
+      .bg { fill: #0f172a; }
+      .box { fill: #1e293b; stroke: #38bdf8; stroke-width: 1.5; rx: 10; }
+      .box2 { fill: #1e293b; stroke: #a78bfa; stroke-width: 1.5; rx: 10; }
+      .box3 { fill: #1e293b; stroke: #34d399; stroke-width: 1.5; rx: 10; }
+      .box4 { fill: #1e293b; stroke: #f59e0b; stroke-width: 1.5; rx: 10; }
+      .t { fill: #e2e8f0; font-family: Segoe UI, Microsoft YaHei, sans-serif; font-size: 14px; }
+      .h { fill: #f8fafc; font-family: Segoe UI, Microsoft YaHei, sans-serif; font-size: 16px; font-weight: 700; }
+      .s { fill: #94a3b8; font-family: Segoe UI, Microsoft YaHei, sans-serif; font-size: 12px; }
+      .line { stroke: #64748b; stroke-width: 2; fill: none; marker-end: url(#arrow); }
+      .line2 { stroke: #64748b; stroke-width: 1.5; fill: none; stroke-dasharray: 6 4; marker-end: url(#arrow); }
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#64748b"/>
+    </marker>
+  </defs>
+
+  <rect class="bg" width="960" height="620"/>
+
+  <text x="40" y="45" class="h">Lingqu AI Relay · Architecture</text>
+  <text x="40" y="68" class="s">Public traffic only reaches Caddy. new-api and captcha gate bind to 127.0.0.1.</text>
+
+  <!-- Client -->
+  <rect x="40" y="110" width="180" height="90" class="box"/>
+  <text x="60" y="142" class="h">Client / SDK</text>
+  <text x="60" y="166" class="s">OpenAI-compatible</text>
+  <text x="60" y="184" class="s">base_url + key</text>
+
+  <!-- Caddy -->
+  <rect x="310" y="90" width="220" height="130" class="box3"/>
+  <text x="330" y="122" class="h">Caddy :443</text>
+  <text x="330" y="146" class="s">TLS / gzip / logs</text>
+  <text x="330" y="164" class="s">/v1 rewrite</text>
+  <text x="330" y="182" class="s">static file_server</text>
+  <text x="330" y="200" class="s">register -&gt; gate</text>
+
+  <!-- new-api -->
+  <rect x="620" y="90" width="220" height="130" class="box"/>
+  <text x="640" y="122" class="h">new-api</text>
+  <text x="640" y="146" class="s">127.0.0.1:3000</text>
+  <text x="640" y="164" class="s">users / tokens</text>
+  <text x="640" y="182" class="s">channels / quota</text>
+  <text x="640" y="200" class="s">logs / billing</text>
+
+  <!-- gate -->
+  <rect x="310" y="290" width="220" height="110" class="box2"/>
+  <text x="330" y="322" class="h">Captcha gate</text>
+  <text x="330" y="346" class="s">127.0.0.1:3100</text>
+  <text x="330" y="364" class="s">math question + HMAC</text>
+  <text x="330" y="382" class="s">rate limit / fallback</text>
+
+  <!-- static -->
+  <rect x="40" y="290" width="180" height="110" class="box4"/>
+  <text x="60" y="322" class="h">Static pages</text>
+  <text x="60" y="346" class="s">/opt/new-api/static</text>
+  <text x="60" y="364" class="s">landing / price / docs</text>
+  <text x="60" y="382" class="s">wallet / topups</text>
+
+  <!-- upstream -->
+  <rect x="620" y="290" width="220" height="110" class="box4"/>
+  <text x="640" y="322" class="h">Upstream APIs</text>
+  <text x="640" y="346" class="s">1..N channels</text>
+  <text x="640" y="364" class="s">OpenAI / Anthropic / ...</text>
+  <text x="640" y="382" class="s">keys stay server-side</text>
+
+  <!-- DB -->
+  <rect x="620" y="470" width="220" height="90" class="box2"/>
+  <text x="640" y="502" class="h">SQLite</text>
+  <text x="640" y="526" class="s">/opt/new-api/data</text>
+  <text x="640" y="544" class="s">one-api.db + WAL</text>
+
+  <!-- backups -->
+  <rect x="310" y="470" width="220" height="90" class="box3"/>
+  <text x="330" y="502" class="h">Backups</text>
+  <text x="330" y="526" class="s">/root/backups</text>
+  <text x="330" y="544" class="s">DB + ops tar.gz</text>
+
+  <!-- arrows -->
+  <path class="line" d="M 220 155 L 305 155"/>
+  <path class="line" d="M 530 155 L 615 155"/>
+  <path class="line" d="M 620 215 L 530 285"/>
+  <path class="line" d="M 530 325 L 615 345"/>
+  <path class="line" d="M 310 155 L 225 300"/>
+  <path class="line2" d="M 730 220 L 730 465"/>
+  <path class="line2" d="M 620 515 L 535 515"/>
+
+  <text x="40" y="595" class="s">Solid: request path. Dashed: data/backup. Gate only guards registration; login goes straight to new-api.</text>
+</svg>

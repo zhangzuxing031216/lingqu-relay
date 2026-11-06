@@ -1,0 +1,27 @@
+services:
+  new-api:
+    # 生产环境建议先拉取一次，记录 digest 后把 latest 换成固定 tag/digest。
+    # 不要在生产机上直接跟着 latest 自动升级。
+    image: calciumion/new-api:latest
+    container_name: new-api
+    restart: always
+    ports:
+      # 只监听本机，由 Caddy 反代。绝对不要写成 0.0.0.0:3000。
+      - "127.0.0.1:3000:3000"
+    volumes:
+      - ./data:/data
+    environment:
+      - TZ=Asia/Shanghai
+      # 放宽 API 全局限流：默认值太低，正常用户注册/刷新都会被 429。
+      # 按自己的流量调整，不要直接关掉限流。
+      - GLOBAL_API_RATE_LIMIT_ENABLE=true
+      - GLOBAL_API_RATE_LIMIT=1200
+      - GLOBAL_API_RATE_LIMIT_DURATION=60
+      - CRITICAL_RATE_LIMIT_ENABLE=true
+      - CRITICAL_RATE_LIMIT=300
+      - CRITICAL_RATE_LIMIT_DURATION=60
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
