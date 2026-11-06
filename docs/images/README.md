@@ -6,6 +6,9 @@
 |---|---|
 | `architecture.svg` | 组件与请求路径 |
 | `deploy-flow.svg` | 十步部署流程 |
+| `admin-dashboard.svg` | 后台运营概览示意（请求、收入、渠道健康、日志） |
+| `price-page.svg` | 对外价格页示意（套餐、模型倍率、占位价格） |
+| `registration-captcha.svg` | 注册页与算术验证码网关示意 |
 
 ## 为什么不放截图
 

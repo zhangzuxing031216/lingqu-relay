@@ -1,5 +1,12 @@
 # 更新记录
 
+## 2026-11-06 · 预览图
+
+- 新增 `docs/images/admin-dashboard.svg`：后台运营概览示意。
+- 新增 `docs/images/price-page.svg`：对外价格页示意。
+- 新增 `docs/images/registration-captcha.svg`：注册验证码网关示意。
+- `README.md` 增加“效果预览”。
+
 ## 2026-11-06 · v0.1
 
 - 初版脱敏模板。

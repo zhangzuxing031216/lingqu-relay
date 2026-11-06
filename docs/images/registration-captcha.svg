@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="640" viewBox="0 0 960 640" role="img" aria-label="Registration captcha gate mockup">
+  <defs>
+    <linearGradient id="bg2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#eff6ff"/>
+      <stop offset="1" stop-color="#e0e7ff"/>
+    </linearGradient>
+    <style>
+      .title { fill: #0f172a; font-family: Segoe UI, Microsoft YaHei, sans-serif; font-size: 22px; font-weight: 800; }
+      .h2 { fill: #0f172a; font-family: Segoe UI, Microsoft YaHei, sans-serif; font-size: 13px; font-weight: 700; }
+      .t { fill: #334155; font-family: Segoe UI, Microsoft YaHei, sans-serif; font-size: 11px; }
+      .s { fill: #64748b; font-family: Segoe UI, Microsoft YaHei, sans-serif; font-size: 10px; }
+      .tiny { fill: #94a3b8; font-family: Segoe UI, Microsoft YaHei, sans-serif; font-size: 9px; }
+      .card { fill: #ffffff; stroke: #e2e8f0; stroke-width: 1; }
+      .field { fill: #f8fafc; stroke: #cbd5e1; stroke-width: 1; }
+      .accent { fill: #2563eb; }
+      .green { fill: #16a34a; }
+      .math { fill: #0f172a; font-family: Consolas, Segoe UI, sans-serif; font-size: 28px; font-weight: 700; letter-spacing: 2px; }
+    </style>
+  </defs>
+
+  <rect width="960" height="640" fill="url(#bg2)"/>
+  <circle cx="90" cy="80" r="120" fill="#bfdbfe" opacity="0.5"/>
+  <circle cx="880" cy="580" r="150" fill="#c7d2fe" opacity="0.45"/>
+
+  <text x="80" y="76" class="title">注册账号</text>
+  <text x="80" y="98" class="s">示例页面 · 域名、邮箱、验证码均为占位</text>
+
+  <rect x="80" y="124" width="520" height="440" class="card" rx="14"/>
+  <text x="108" y="158" class="h2">创建你的账号</text>
+  <text x="108" y="178" class="s">注册后可在钱包页充值，在文档页查看接入方式。</text>
+
+  <text x="108" y="212" class="t">邮箱</text>
+  <rect x="108" y="224" width="464" height="38" rx="7" class="field"/>
+  <text x="122" y="248" class="s">you@example.com</text>
+
+  <text x="108" y="284" class="t">密码</text>
+  <rect x="108" y="296" width="464" height="38" rx="7" class="field"/>
+  <text x="122" y="320" class="s">至少 8 位，建议密码管理器生成</text>
+
+  <text x="108" y="356" class="t">确认密码</text>
+  <rect x="108" y="368" width="464" height="38" rx="7" class="field"/>
+  <text x="122" y="392" class="s">再输入一次</text>
+
+  <text x="108" y="428" class="t">邀请码（可选）</text>
+  <rect x="108" y="440" width="220" height="38" rx="7" class="field"/>
+  <text x="122" y="464" class="s">INVITE-CODE</text>
+
+  <rect x="108" y="500" width="464" height="42" rx="7" class="accent"/>
+  <text x="300" y="526" class="t" fill="#ffffff" font-weight="700">注册</text>
+
+  <text x="108" y="552" class="tiny">注册即表示同意服务条款与隐私政策（示例）</text>
+
+  <!-- captcha -->
+  <rect x="624" y="124" width="256" height="304" class="card" rx="14"/>
+  <text x="648" y="158" class="h2">人机验证</text>
+  <text x="648" y="178" class="s">由 captcha-gate 本地校验</text>
+
+  <rect x="648" y="198" width="208" height="76" rx="10" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="694" y="246" class="math">7 + 5 = ?</text>
+
+  <rect x="648" y="290" width="208" height="38" rx="7" class="field"/>
+  <text x="662" y="314" class="s">输入答案</text>
+  <text x="828" y="314" class="s">↻</text>
+
+  <rect x="648" y="340" width="208" height="34" rx="7" fill="#dcfce7" stroke="#86efac"/>
+  <text x="662" y="362" class="s" fill="#166534">✓ 验证通过，可提交注册</text>
+
+  <text x="648" y="400" class="tiny">答案只存在服务端会话，不写入前端。</text>
+  <text x="648" y="416" class="tiny">错误 3 次刷新题目；限流后返回 429。</text>
+
+  <!-- flow -->
+  <rect x="624" y="448" width="256" height="116" class="card" rx="14"/>
+  <text x="648" y="476" class="h2">请求路径</text>
+  <text x="648" y="500" class="s">浏览器 → Caddy /lq/captcha</text>
+  <text x="648" y="520" class="s">→ captcha-gate 127.0.0.1:3100</text>
+  <text x="648" y="540" class="s">→ 校验通过 → new-api 注册</text>
+
+  <text x="80" y="606" class="tiny" fill="#b45309">示意图（mockup）：演示注册页与算术验证码的布局和请求路径，不是真实站点截图；不构成安全审计结论。</text>
+</svg>
