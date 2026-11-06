@@ -3,6 +3,7 @@
 > **Language / 语言**: 中文 | [English](README.en.md)
 > **名称 / Name**: 灵渠 AI 中转站 · Lingqu AI Relay
 > **当前版本 / Current version**: [`v0.1.0`](CHANGELOG.md) · [版本规则](VERSIONING.md)
+> **工作记录 / Worklog**: [WORKLOG.md](WORKLOG.md)
 
 > 用一台小服务器，把多个上游 AI API 聚合成一个 **OpenAI 兼容入口**，带用户、令牌、额度、充值、自定义前端、注册验证码、监控和备份。
 >

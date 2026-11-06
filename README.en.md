@@ -3,6 +3,7 @@
 > **Language / 语言**: [中文](README.md) | English
 > **Name / 名称**: Lingqu AI Relay · 灵渠 AI 中转站
 > **Current version**: [`v0.1.0`](CHANGELOG.md) · [Versioning rules](VERSIONING.md)
+> **Worklog**: [WORKLOG.md](WORKLOG.md)
 
 > Use a small server to aggregate multiple upstream AI APIs into a single **OpenAI-compatible endpoint**, with users, tokens, quota, top-ups, a custom frontend, registration captcha, monitoring, and backups.
 >
