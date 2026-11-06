@@ -1,5 +1,7 @@
 # AI-DEPLOY.md · 灵渠 AI 中转站部署指令（给 AI 读）
 
+> **Language / 语言**: 中文 | [English](AI-DEPLOY.en.md)
+
 > 目标机器：Ubuntu 22.04 / 24.04，root 或 sudo。
 > 目标结果：`https://www.<域名>` 能打开，`/api/status` 返回 200，new-api 后台能登录，注册验证码网关工作，备份能跑。
 > 模板版本：2026-11
