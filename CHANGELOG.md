@@ -5,7 +5,8 @@
 - 新增 `docs/images/admin-dashboard.svg`：后台运营概览示意。
 - 新增 `docs/images/price-page.svg`：对外价格页示意。
 - 新增 `docs/images/registration-captcha.svg`：注册验证码网关示意。
-- `README.md` 增加“效果预览”。
+- 新增 `docs/images/newapi-setup.png`、`newapi-dashboard.png`：new-api v1.0.0-rc.48 真实截图。
+- `README.md` 增加“效果预览”和首屏徽章/简介/新手 3 步。
 
 ## 2026-11-06 · v0.1
 

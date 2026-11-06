@@ -11,21 +11,71 @@
 > - 不会用 AI？看这份 `README.md`。
 > - 想让 AI 装？把 `AI-DEPLOY.md` 整个丢给 AI。
 
+<p>
+  <img alt="Ubuntu 22.04 / 24.04" src="https://img.shields.io/badge/Ubuntu-22.04%20%7C%2024.04-E95420?logo=ubuntu&logoColor=white&style=flat-square">
+  <img alt="Docker Compose" src="https://img.shields.io/badge/Docker-compose-2496ED?logo=docker&logoColor=white&style=flat-square">
+  <img alt="new-api" src="https://img.shields.io/badge/new--api-1.x-4f46e5?style=flat-square">
+  <img alt="Caddy" src="https://img.shields.io/badge/Caddy-2.x-1f88c0?style=flat-square">
+  <img alt="License MIT" src="https://img.shields.io/badge/License-MIT-blue?style=flat-square">
+  <img alt="中文文档" src="https://img.shields.io/badge/docs-%E4%B8%AD%E6%96%87-0ea5e9?style=flat-square">
+</p>
+
+## 项目简介
+
+这是一套**可以照着复刻的 AI API 中转站部署模板**：Docker + new-api + Caddy + SQLite，带用户、令牌、额度、充值、自定义前端、注册验证码、监控和备份。
+
+它不是“买台服务器就能自动赚钱”的项目。上游条款、内容合规、支付和退款都要你自己负责；文档把风险写在最前面。
+
+**适合谁**
+
+- 想把多个上游 key 收成一个 OpenAI 兼容入口的人。
+- 小团队内部使用，需要用户、额度、日志和备份的人。
+- 想完整学一遍 new-api / Caddy / Docker 部署的人。
+
+**不适合谁**
+
+- 想“零维护、零合规、躺赚”的人。
+- 不愿意处理域名、HTTPS、支付和滥用投诉的人。
+- 只需要一个 key 调一个模型的人；直接填官方 base_url 更省事。
+
+**你会得到什么**
+
+| 产物 | 位置 |
+|---|---|
+| 人看的十步部署 | `README.md`（本文） |
+| AI 部署协议 | `AI-DEPLOY.md` |
+| Docker / Caddy / 验证码网关 | `deploy/` |
+| 初始化、备份、健康检查、模型探测 | `scripts/` |
+| 架构、安装、运维、安全、支付、前端 | `docs/` |
+| 真实截图 + 效果 mockup | `docs/images/` |
+
+**新手先做这 3 步**
+
+1. 先读第 0 节“这不是无脑赚钱站”，确认用途合规。
+2. 准备域名、服务器、上游 key；按第 3 节清单逐项打勾。
+3. 按第 4 节十步部署，先跑通 `/v1/models`，再开注册和充值。
+
 ---
 
 ## 效果预览
 
-先看三张示意：后台能看什么、价格页长什么样、注册验证码怎么挡机器注册。**均为 mockup，不是真实后台截图**；域名、用户、模型名、价格都是占位示例。
+**本机真实截图**：new-api `v1.0.0-rc.48` 初始化向导 + 刚初始化后的后台（无数据）。
 
-**后台运营概览**
+![new-api 初始化向导](docs/images/newapi-setup.png)
+
+![new-api 后台真实截图](docs/images/newapi-dashboard.png)
+
+> 真实后台刚建好是空白的，所以下面再放三张“有数据后”的 mockup，方便看最终效果。域名、用户、模型名、价格都是占位示例。
+
+**后台运营概览（有数据后的效果示意）**
 
 ![后台运营概览示意](docs/images/admin-dashboard.svg)
 
-**对外价格页**
+**对外价格页（效果示意）**
 
 ![价格页示意](docs/images/price-page.svg)
 
-**注册验证码网关**
+**注册验证码网关（效果示意）**
 
 ![注册验证码示意](docs/images/registration-captcha.svg)
 
